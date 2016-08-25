@@ -1,18 +1,17 @@
 require 'csv'
 module Bank
   class Account
-    attr_accessor :id, :check_balance, :saving_balance, :date_created
+    attr_accessor :id, :balance, :date_created
 
-    def initialize(id, check_balance, saving_balance, date_created)
+    def initialize(id, balance, date_created)
       @id = id
-      @check_balance = check_balance/100.00
-      sa
+      @balance = balance
       @date_created = date_created    #.strftime("%b %d, %Y")
 
-      while balance <= 0
-        puts "Invalid: Cannot create an account without any funds yo!"
-      #TODO: figure out the Argument Error stuff...
-      end
+      # while balance.to_f <= 0
+      #   puts "Invalid: Cannot create an account without any funds yo!"
+      # #TODO: figure out the Argument Error stuff...
+      # end
     end
 
     # def self.store_acccount_info
@@ -30,10 +29,9 @@ module Bank
       info = {}
       CSV.read('accounts.csv').each do |line|
         id = line[0].to_i
-        check_balance = line[1].to_i
-        saving_balance = line[2].to_i
-        date_created = line[3]
-        info[id] = self.new(id, check_balance, saving_balance, date_created)
+        balance = line[1].to_i
+        date_created = line[2]
+        info[id] = self.new(id, balance, date_created)
       end
       return info
     end
