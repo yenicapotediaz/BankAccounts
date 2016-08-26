@@ -8,7 +8,9 @@ module Bank
       @balance = balance / 100.00
       @date_created = date_created    #.strftime("%b %d, %Y")
 
-      # while balance.to_f <= 0
+      while balance < 0
+        raise ArgumentError, "Balance cannot be negative"
+      end
       #   puts "Invalid: Cannot create an account without any funds yo!"
       # #TODO: figure out the Argument Error stuff...
       # end

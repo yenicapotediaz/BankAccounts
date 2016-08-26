@@ -7,11 +7,12 @@ module Bank
     def initialize(savings_bal)
       @interest = interest
       @savings_bal = savings_bal.to_f
-      # super()
-      # while @savings_bal < 10
-      #   puts" Cannot open an account with an amount lower than $10"
-      # end
+      # super
+      while savings_bal < 10
+        raise ArgumentError, "Starting balance cannot be uner $10"
+      end
     end
+
 
     def balance
       @savings_bal = savings_bal
@@ -44,7 +45,7 @@ end
 
 
 #Testing testing 123
-sav = Bank::SavingsAccount.new(23.40)
+sav = Bank::SavingsAccount.new(3.40)
 puts sav.balance
 puts sav.add_interest(0.25)
 puts sav.withdraw(23)
