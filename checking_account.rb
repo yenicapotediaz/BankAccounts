@@ -3,6 +3,7 @@ require_relative 'account'
 module Bank
   class CheckingAccount < Account
     attr_accessor :check, :id, :balance, :date_created
+    FEE = 1
 
     def initialize(id, balance, date_created)
       @id = id
@@ -11,10 +12,10 @@ module Bank
       @date_created = date_created
     end
 
-    def withdraw(amount)
-      @balance = @balance - 1
-      super
-    end
+    # def withdraw(amount)
+    #   @balance = @balance - 1
+    #   super
+    # end
 
     def withdraw_using_check(amount)
       while @balance < -10

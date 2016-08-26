@@ -27,10 +27,11 @@ p all_checkings[15156].withdraw_using_check(345)
 p all_checkings[15156]
 
 #withdraw using superclass method and make sure fee is taken out
-p all_checkings[15156].withdraw(345)
+p all_checkings[15156].withdraw(427)
 
 #running savings account
-sav = Bank::SavingsAccount.new(23.40)
-puts sav.balance
-puts sav.add_interest(0.25)
-puts sav.withdraw(23)
+sav = Bank::SavingsAccount.all
+one_acc = sav[15156]
+puts one_acc.add_interest(0.25)
+puts one_acc.withdraw(430)
+puts one_acc.withdraw(3478)

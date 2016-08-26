@@ -2,7 +2,8 @@ require 'csv'
 module Bank
   class Account
     attr_accessor :id, :balance, :date_created
-
+    MIN_BAL = 0
+    FEE = 0
     def initialize(id, balance, date_created)
       @id = id
       @balance = balance / 100.00
@@ -33,10 +34,10 @@ module Bank
     end
 
     def withdraw(amount)
-      @balance = @balance - amount
-      while @balance < 0
-        puts "Error: You cannot withdraw more than your current balance."
-        @balance = @balance + amount
+      @balance = (@balance - amount) - self.class::FEE
+      while @balance < self.class::MIN_BAL
+        puts "Error: You cannot withdraw more than your current balance!"
+        @balance = @balance + amount + self.class::FEE
       end
       return "Your balance is $#{@balance}."
     end

@@ -2,42 +2,30 @@ require_relative 'account'
 
 module Bank
   class SavingsAccount < Account
-    attr_accessor :savings_bal, :interest
+    attr_accessor :interest, :id, :balance, :date_created
+    MIN_BAL = 10
+    FEE = 2
+    def initialize(id, balance, date_created)
+      @id = id
+      @balance = balance
+      @check = 0
+      @date_created = date_created
+      @interest = 0
 
-    def initialize(savings_bal)
-      @interest = interest
-      @savings_bal = savings_bal.to_f
-      # super
-      while savings_bal < 10
+      while balance < 10
         raise ArgumentError, "Starting balance cannot be uner $10"
       end
     end
 
-
-    def balance
-      @savings_bal = savings_bal
-      return " Your balance is $#{@savings_bal}"
-    end
-
-
-
-    def withdraw(amount)
-      @savings_bal = (@savings_bal - amount) - 2
-      while @savings_bal < 10
-        puts "Error: Cannot withdraw $#{amount}. Your account must have at least $10."
-        @savings_bal = (@savings_bal + amount) + 2
-      end
-      return "Your balance is $#{@savings_bal}."
-    end
-
-    def deposit(amount)
-      @savings_bal = @saving_bal + amount
-      return "You balance is $#{@saving_bal}"
-    end
+    # def withdraw(amount)
+    #
+    #   super
+    #
+    # end
 
     def add_interest(percent)
-      @interest = @savings_bal * percent.to_f
-      @savings_bal = @savings_bal + @interest
+      @interest = @balance * percent / 100.00
+      @balance = @balance + @interest
       return "The interest is $#{@interest}"
     end
   end
