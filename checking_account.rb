@@ -12,11 +12,6 @@ module Bank
       @date_created = date_created
     end
 
-    # def withdraw(amount)
-    #   @balance = @balance - 1
-    #   super
-    # end
-
     def withdraw_using_check(amount)
       while @balance < -10
         puts "Error: Your account cannot go under -$10.00"
