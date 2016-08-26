@@ -42,11 +42,3 @@ module Bank
     end
   end
 end
-
-
-#Testing testing 123
-sav = Bank::SavingsAccount.new(3.40)
-puts sav.balance
-puts sav.add_interest(0.25)
-puts sav.withdraw(23)
-puts sav.cat_lover("Y")

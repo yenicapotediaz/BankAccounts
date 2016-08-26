@@ -12,12 +12,8 @@ module Bank
     end
 
     def withdraw(amount)
-      @balance = (@balance - amount) - 1
-      while @balance < 10
-        puts "Error: Your account must have at least $10."
-        @balance = (@balance + amount) + 1
-      end
-      return "Your balance is $#{@balance}."
+      @balance = @balance - 1
+      super
     end
 
     def withdraw_using_check(amount)
@@ -41,11 +37,3 @@ module Bank
     end
   end
 end
-
-#Testing testing 123
-look = Bank::CheckingAccount.all
-
-p look[15156].balance
-
-p look[15156].withdraw_using_check(345)
-p look[15156]

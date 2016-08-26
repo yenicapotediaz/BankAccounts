@@ -28,14 +28,6 @@ module Bank
       return self.all[id]
     end
 
-    def cat_lover(answer)
-      if answer == "Y"
-        return "Yay! You're a cat lover!!!!"
-      else
-        return "Whatevs bro"
-      end
-    end
-
     def balance
       return @balance
     end
