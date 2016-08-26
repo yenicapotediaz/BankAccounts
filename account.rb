@@ -11,9 +11,6 @@ module Bank
       while balance < 0
         raise ArgumentError, "Balance cannot be negative"
       end
-      #   puts "Invalid: Cannot create an account without any funds yo!"
-      # #TODO: figure out the Argument Error stuff...
-      # end
     end
 
     def self.all
@@ -40,7 +37,7 @@ module Bank
     end
 
     def balance
-      return "Your balance is $#{@balance}."
+      return @balance
     end
 
     def withdraw(amount)
